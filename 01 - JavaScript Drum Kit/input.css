@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+.button {
+  @apply border-[5px] flex justify-center cursor-pointer flex-col items-center border-black text-white rounded-xl border-solid w-32 h-32 py-2 px-4 text-[48px] transition-transform duration-300 ease-in-out;
+}
+.button.active {
+  @apply border-[#ffc600] scale-125;
+}
+.sound {
+  @apply text-[#ffc600] text-xl uppercase block;
+}
