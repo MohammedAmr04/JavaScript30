@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+.home::after {
+  background-color: rgba(0, 0, 0, 30%);
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.container {
+  @apply lg:w-[90%] mx-auto;
+}
+.hand {
+  position: absolute;
+  top: 50%;
+  width: 50%;
+  height: 8px;
+  /* transform: translate(-50%, -50%); */
+  transform-origin: 100%;
+  background-color: #000000;
+}
+
+.clock-shadow {
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #efefef,
+    inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
+}
