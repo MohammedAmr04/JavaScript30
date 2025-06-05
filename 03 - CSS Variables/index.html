@@ -3,10 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="output.css" />
-    <title>Demo</title>
+    <title>03-CSS Variables</title>
+    <style>
+      :root {
+        --base: #ffc600;
+        --spacing: 10px;
+        --blur: 10px;
+      }
+      body {
+        color: white;
+        background-color: #193549;
+        text-align: center;
+        font-family: "helvetica neue", sans-serif;
+        margin: 2rem auto;
+        font-size: 30px;
+      }
+    </style>
   </head>
   <body>
-    <script src="main.js"></script>
+    <h1>Update CSS Variables with <span>JS</span></h1>
+    <div
+      style="margin: 0 auto; display: flex; justify-content: center; gap: 20px"
+    >
+      <div>
+        <label for="spacing">Spacing:</label>
+        <input
+          type="range"
+          name="spacing"
+          id="spacing"
+          min="10"
+          max="200"
+          value="10"
+        />
+      </div>
+      <div>
+        <label for="blur">Blur:</label>
+        <input type="range" name="blur" id="blur" min="0" max="25" value="10" />
+      </div>
+      <div>
+        <label for="base">Base Color:</label>
+        <input type="color" name="base" id="base" value="#ffc600" />
+      </div>
+    </div>
+    <div
+      class="box"
+      style="
+        margin: 30px auto;
+        width: var(--spacing);
+        height: var(--spacing);
+        filter: blur(var(--blur));
+        background-color: var(--base);
+      "
+    ></div>
+    <script>
+      const inputs = document.querySelectorAll("input");
+      inputs.forEach((input) => {
+        input.addEventListener("change", handleUpdate);
+        input.addEventListener("mousemove", handleUpdate);
+      });
+      function handleUpdate(e) {
+        const suffix = this.name === "base" ? "" : "px";
+        document.documentElement.style.setProperty(
+          `--${this.name}`,
+          this.value + suffix
+        );
+      }
+    </script>
   </body>
 </html>
